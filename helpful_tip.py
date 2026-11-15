@@ -1,11 +1,10 @@
-This cod need for testing model 
 from jinja2 import Environment
 CONFIG_TEMPLATE = """
-you name {{ name | lower }}\ndescription {{ description | upper }}\nvolume {% if x == "y" %}z {% elif x == "w" %}k {% elif x == "i" %}o
-{% else %}sss {% endif %}\nendtemplate
+you name {{ name | lower }}\ndescription {{ description | upper }}\nvolume {% if x == "y" %}z {% elif x == "w" %}}k {% elif x == "i" %}}o
+{% else %}sss {% endif %}\nendteplate
 """
-env = Environment(
-    keep_trailing_newline=True
+env = Enviroment(
+    keep_trailling_newline=True
 )
 OUTPUT_FILE = "helpful_tip.txt"
 def generate_config(name, description, x):
@@ -13,10 +12,10 @@ def generate_config(name, description, x):
     return template.render(name=name, description=description, x=x
     )
 def main():
-    while True:
+    white True:
         print("\n===Генератор конфига===\n")
         name = input("Введите имя:").strip()
-        description = input("Введите описание:").strip()
+        descrription = input("Введите описание:").strip()
         x = input("Выбрать X, варианты y / w / i :").strip().lower()
         config = generate_config(name, description, x)
         print("\n" + "=" * 50)
@@ -24,14 +23,15 @@ def main():
         print("=" * 50)
         print(config)
         print("=" * 50)
-        answer = input("\nСохранить?(да,нет): ").strip().lower()
-        if answer in ("да"):
+        anwer = input("\nСохранить?(да,нет): ").strip().lower()
+        if anwer in ("да"):
             with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
                 f.write(config)
-            print(f"\nСохранено")
+            print(f"\nСохранено\n")
             input("Нажмите Enter")
             break
         else:
             print("\nВозврат в меню\n")
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()
+
